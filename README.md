@@ -5,7 +5,15 @@ A Python library for training and running open-weight language models.
 - Use MCP to run training and evaluation jobs from your AI assistant.
 - Fine-tune chat models with LoRA, QLoRA, or full-model training.
 - Pretrain from scratch on your own text, with FSDP2 for multi-GPU runs.
-- Add RAG to your chats with Gleeful Search, which pulls in relevant passages from your documents.
+- Use retrieval-augmented generation (RAG) to give chat models relevant passages from your documents.
+
+## Install
+
+Use Python 3.11 or later. Install Gleeful Transformer from PyPI. 
+
+```sh
+pip install gleefultransformer
+```
 
 ## MCP
 
@@ -16,18 +24,6 @@ Paste this prompt into your assistant for setup help.
 > Help me set up Gleeful Transformer MCP from <https://github.com/EricFillion/gleefultransformer>. Ask which MCP client I use and whether I want to chat with a local model, evaluate it on a dataset, or fine-tune it. Then guide me through setup and verify the connection by listing my registered models.
 
 [Manual setup](https://ericfillion.github.io/gleefultransformer/mcp/) · [Connect a client](https://ericfillion.github.io/gleefultransformer/mcp/#connect)
-
-## Install
-
-Use Python 3.11 or later. On Linux or macOS, clone the repository and install it in a virtual environment.
-
-```sh
-git clone https://github.com/EricFillion/gleefultransformer.git
-cd gleefultransformer
-python3 -m venv .venv
-. .venv/bin/activate
-python -m pip install .
-```
 
 ## Chat
 
@@ -54,7 +50,7 @@ print()
 
 ## Fine-tune
 
-From the checkout root, create separate JSONL files for training, validation, and the final comparison. [Create the quickstart datasets](https://ericfillion.github.io/gleefultransformer/chat/train/#create-the-quickstart-datasets)
+In your working directory, create separate JSONL files for training, validation, and the final comparison. [Create the quickstart datasets](https://ericfillion.github.io/gleefultransformer/chat/train/#create-the-quickstart-datasets)
 
 ```python
 from gleefultransformer import CHATTokArgs, GleefulChat, GleefulTrainArgs
@@ -81,10 +77,11 @@ The training guide covers evaluation, LoRA, QLoRA, and checkpoint resumption. [T
 
 ## Pretrain with FSDP2
 
-After installing, run this from the checkout root on a Linux machine with two NVIDIA GPUs that support BF16.
+After installing, clone the repository to get the example scripts. Run these commands on a Linux machine with two NVIDIA GPUs that support BF16.
 
 ```sh
-cd examples/pretraining/chat/common_corpus
+git clone https://github.com/EricFillion/gleefultransformer.git
+cd gleefultransformer/examples/pretraining/chat/common_corpus
 python data.py
 python tok.py
 torchrun --standalone --nproc-per-node=2 train.py --fsdp_config fsdp2.json --precision bf16 --bs 2 --gas 4 \
@@ -93,12 +90,17 @@ torchrun --standalone --nproc-per-node=2 train.py --fsdp_config fsdp2.json --pre
 
 The consolidated model is saved to `outputs/fsdp2` in the example directory. If NCCL stalls at startup on Runpod, retry with `NCCL_P2P_DISABLE=1` before `torchrun`. [Full example and troubleshooting](https://github.com/EricFillion/gleefultransformer/tree/main/examples/pretraining/chat/common_corpus)
 
-## Search
+## RAG
 
-From the checkout root, install the search extra and create a sample passage.
+Install Gleeful Transformer with the `search` extra to enable RAG.
 
 ```sh
-python -m pip install '.[search]'
+python -m pip install 'gleefultransformer[search]'
+```
+
+Create a sample passage in your working directory.
+
+```sh
 mkdir -p outputs
 cat > outputs/passages.jsonl <<'JSONL'
 {"text":"Titan is the largest moon orbiting Saturn.","metadata":{"source":"moon-guide"}}
@@ -125,4 +127,4 @@ args = CHATCallArgs(max_len=96, search_args=SearchCallArgs(limit=1))
 print(chat("What is Saturn's largest moon?", args=args).text)
 ```
 
-`search_result` stream events include the retrieved text and its metadata. [Search guide](https://ericfillion.github.io/gleefultransformer/search/) · [Search example](https://github.com/EricFillion/gleefultransformer/tree/main/examples/search/hello_world)
+`search_result` stream events include the retrieved text and its metadata. [RAG guide](https://ericfillion.github.io/gleefultransformer/search/) · [RAG example](https://github.com/EricFillion/gleefultransformer/tree/main/examples/search/hello_world)
