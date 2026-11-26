@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "reshard_after_forward": true,
+  "auto_wrap_policy": "TRANSFORMER_BASED_WRAP",
+  "transformer_layer_cls_to_wrap": ["GPT2Block"],
+  "state_dict_type": "SHARDED_STATE_DICT"
+}

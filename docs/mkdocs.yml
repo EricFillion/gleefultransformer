@@ -1,0 +1,35 @@
+site_name: Gleeful Transformer
+site_description: Run, stream, and fine-tune chat models in Python.
+site_url: https://ericfillion.github.io/gleefultransformer/
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: false
+      anchor_linenums: false
+      pygments_lang_class: true
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Chat:
+      - Inference: chat/index.md
+      - Training and evaluation: chat/train.md
+  - Gleeful Search: search/index.md
+  - MCP: mcp.md
+  - Reference:
+      - Inference arguments: call-args.md
+      - Training arguments: train-args.md
+      - Evaluation arguments: eval-args.md
+      - Tokenize data: tokenize.md
+      - Save and load a model: save.md
+      - Push to the Hugging Face Hub: push.md
+
+validation:
+  links:
+    anchors: warn
+    unrecognized_links: warn

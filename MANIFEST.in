@@ -1,0 +1,15 @@
+global-exclude *
+
+recursive-include gleefultransformer *.py
+
+include pyproject.toml
+include README.md
+include LICENSE*
+
+prune data
+prune docs
+prune examples
+prune tests
+
+exclude .gitignore
+exclude main.py

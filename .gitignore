@@ -1,0 +1,93 @@
+# Training runs, checkpoints, and exported models
+runs/
+outputs/
+model/
+models/
+checkpoint-*/
+wandb/
+tensorboard/
+events.out.tfevents.*
+/gleeful_search/
+/examples/**/gleeful_search/
+
+# Downloaded and generated example data
+/examples/**/data/*
+!/examples/**/data/.gitkeep
+
+# Python bytecode and local compiled extensions
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Python builds and installer artifacts
+.Python
+build/
+dist/
+sdist/
+wheels/
+.eggs/
+*.egg
+*.egg-info/
+.installed.cfg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Local Python environments and credentials
+.venv/
+venv/
+env/
+ENV/
+__pypackages__/
+.pdm-build/
+.pdm-python
+.pixi/
+.env
+.env.*
+!.env.example
+!.env.sample
+.envrc
+.pypirc
+
+# Tests, coverage, and analysis caches
+.cache/
+.pytest_cache/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+*.cover
+*.py,cover
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pyre/
+.pytype/
+
+# Documentation and notebooks
+/site/
+/docs/site/
+/docs/_build/
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# Editor settings and operating system files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.AppleDouble/
+Thumbs.db
+Desktop.ini
+
+# Local MCP workspaces and run artifacts
+/mcp-workspace/
+.gleeful/

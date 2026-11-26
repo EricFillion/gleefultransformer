@@ -1,0 +1,68 @@
+[project]
+name = "gleefultransformer"
+version = "0.0.1"
+requires-python = ">=3.11"
+description = "Run, stream, and fine-tune chat models in Python, with optional document retrieval."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+keywords = [
+    "ai",
+    "transformer",
+    "gleeful",
+    "nlp",
+    "training",
+    "fine-tuning",
+    "rag"
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "torch>=2.6",
+    "tqdm>=4.66.3",
+    "transformers[chat-template]>=5.23.0,<6",
+    "accelerate>=1.16,<2",
+    "datasets>=4.0.0,<5.0.0",
+    "huggingface-hub>=1.31,<3",
+    "sentencepiece",
+    "protobuf",
+    "tokenizers>=0.23.1,<0.24",
+    "safetensors>=0.8",
+    "matplotlib>=3.9,<4.0",
+    "numpy>=2.0,<3.0",
+    "mcp>=2.3,<3",
+    "pydantic>=2,<3",
+    "filelock>=3",
+]
+
+[project.urls]
+Documentation = "https://ericfillion.github.io/gleefultransformer/"
+Repository = "https://github.com/EricFillion/gleefultransformer"
+
+[project.optional-dependencies]
+search = ["sentence-transformers>=5.7,<6"]
+test = ["pytest>=7.4"]
+qlora = [
+    "peft>=0.22,<1",
+    "bitsandbytes>=0.48; sys_platform == 'linux' or sys_platform == 'win32'",
+]
+
+[project.scripts]
+gleeful-mcp = "gleefultransformer.mcp.cli:server_main"
+gleeful-mcp-worker = "gleefultransformer.mcp.cli:worker_main"
+
+[tool.setuptools.packages.find]
+include = ["gleefultransformer", "gleefultransformer.*"]
+
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
