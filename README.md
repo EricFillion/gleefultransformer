@@ -19,7 +19,13 @@ Use the built-in Model Context Protocol (MCP) server to chat with a local model,
 
 Paste this prompt into your assistant for setup help.
 
-> Help me set up Gleeful Transformer MCP from <https://github.com/EricFillion/gleefultransformer>. Ask which MCP client I use and whether I want to chat with a local model, evaluate it on a dataset, or fine-tune it. Then guide me through setup and verify the connection by listing my registered models.
+```text
+Help me set up Gleeful Transformer MCP from
+https://github.com/EricFillion/gleefultransformer.
+Ask which MCP client I use and whether I want to chat with a local model,
+evaluate it on a dataset, or fine-tune it. Then guide me through setup
+and verify the connection by listing my registered models.
+```
 
 [Manual setup](https://ericfillion.github.io/gleefultransformer/mcp/) · [Connect a client](https://ericfillion.github.io/gleefultransformer/mcp/#connect)
 
