@@ -1,9 +1,7 @@
 # Gleeful Transformer
 
-A Python library for training and running open-weight language models.
-
 - Run training and evaluation jobs from your AI assistant via MCP.
-- Fine-tune chat models with LoRA, QLoRA, or full-parameter training.
+- Fine-tune models with LoRA, QLoRA, or full-parameter training.
 - Pretrain models across multiple GPUs with FSDP2.
 - Build retrieval-augmented generation (RAG) workflows with Gleeful Search, a custom vector search engine.
 
