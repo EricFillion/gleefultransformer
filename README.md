@@ -2,10 +2,10 @@
 
 A Python library for training and running open-weight language models.
 
-- Use MCP to run training and evaluation jobs from your AI assistant.
-- Fine-tune chat models with LoRA, QLoRA, or full-model training.
-- Pretrain from scratch on your own text, with FSDP2 for multi-GPU runs.
-- Use retrieval-augmented generation (RAG) to give chat models relevant passages from your documents.
+- Run training and evaluation jobs from your AI assistant via MCP.
+- Fine-tune chat models with LoRA, QLoRA, or full-parameter training.
+- Pretrain models across multiple GPUs with FSDP2.
+- Build retrieval-augmented generation (RAG) workflows with Gleeful Search, a custom vector search engine.
 
 ## Install
 
